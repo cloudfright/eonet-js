@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <header>
         <nav class="navbar top navbar-expand-sm navbar-dark bg-dark mb-5">
             <div class="container-fluid">
@@ -48,19 +47,16 @@
         </nav>
     </header>
 
-    <div class="container">
-        <h1 class="fw-light mb-5">Categories</h1>
-        
-        <!--
-        <div class="spinner-grow" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        -->
-        <div id="categories" class="container">
-            <!-- EONET categories will be inserted here programmatically -->
-        </div>
-    </div>
-
+    <main>
+        <div class="container">
+            <h1 class="fw-light mb-5">Categories</h1>
+            <div role="table" aria-label="Categories" class="container">
+                <div id="categories" role="rowgroup">
+                    <!-- EONET categories will be inserted here programmatically -->
+                    <div>
+                    </div>
+                </div>
+    </main>
 
     <footer></footer>
     <script>
@@ -71,3 +67,5 @@
 </body>
 
 </html>
+
+
