@@ -14,7 +14,7 @@
 <body>
 
     <header>
-        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <nav class="navbar top navbar-expand-sm navbar-dark bg-dark mb-5">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">EONET</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -46,6 +46,38 @@
             </div>
         </nav>
     </header>
+
+    <main>
+        <div class="container">
+            <h1 class="fw-light mb-5">Current Natural Events</h1>
+            <div role="table" aria-label="Dashboard" class="container">
+                <div class="row">
+                    <div class="col">Drought<span id="drought"></span></div>
+                    <div class="col">Dust Haze<span id="dusthaze"></span></div>
+                    <div class="col">Earthquakes<span id="earthquakes"></span></div>
+                    <div class="col">Floods<span id="floods"></span></div>
+                    <div class="col">Landslides<span id="landslides"></span></div>
+                    <div class="col">Man made<span id="manmade"></span></div>
+                    <div class="col">Sea Lake Ice<span id="sealakeice"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col">Severe Storms<span id="severestorms"></span></div>
+                    <div class="col">Snow<span id="snow"></span></div>
+                    <div class="col">Temp Extremes<span id="tempextremes"></span></div>
+                    <div class="col">Volcanoes<span id="volcanoes"></span></div>
+                    <div class="col">Water Colour<span id="watercolour"></span></div>
+                    <div class="col">Wildfires<span id="wildfires"></span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script>
+        window.addEventListener('load', (event) => {
+            fetchDashboardDataAsync()
+        });
+    </script>
 </body>
 
 </html>

@@ -31,3 +31,58 @@ async function fetchCategoriesAsync() {
     }
 }
 
+async function fetchDashboardDataAsync() {
+    let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open')
+    let data = await response.json()
+  
+    let eventTotals = {
+      drought: 0,
+      dustHaze: 0,
+      earthquakes: 0,
+      floods: 0,
+      landslides: 0,
+      manmade: 0,
+      seaLakeIce: 0,
+      severeStorms: 0,
+      snow: 0,
+      tempExtremes: 0,
+      volcanoes: 0,
+      waterColour: 0,
+      wildfires: 0
+    }
+  
+    for (const event of data.events) {
+      switch (event.categories[0].id) // count up the event id
+      {
+        case 'drought': eventTotals.drought++; break;
+        case 'dustHaze': eventTotals.dustHaze++; break;
+        case 'earthquakes': eventTotals.earthquakes++; break;
+        case 'floods': eventTotals.floods++; break;
+        case 'landslides': eventTotals.landslides++; break;
+        case 'manmade': eventTotals.manmade++; break;
+        case 'seaLakeIce': eventTotals.seaLakeIce++; break;
+        case 'severeStorms': eventTotals.severeStorms++; break;
+        case 'snow': eventTotals.snow++; break;
+        case 'tempExtremes': eventTotals.tempExtremes++; break;
+        case 'volcanoes': eventTotals.volcanoes++; break;
+        case 'waterColor': eventTotals.waterColour++; break;
+        case 'wildfires': eventTotals.wildfires++; break;
+      }
+    }
+
+    document.querySelector('#drought').textContent = eventTotals.drought
+    document.querySelector('#dusthaze').textContent = eventTotals.dustHaze
+    document.querySelector('#earthquakes').textContent = eventTotals.earthquakes
+    document.querySelector('#floods').textContent = eventTotals.floods
+    document.querySelector('#landslides').textContent = eventTotals.landslides
+    document.querySelector('#manmade').textContent = eventTotals.manmade
+    document.querySelector('#sealakeice').textContent = eventTotals.seaLakeIce
+    document.querySelector('#severestorms').textContent = eventTotals.severeStorms
+    document.querySelector('#snow').textContent = eventTotals.snow
+    document.querySelector('#tempextremes').textContent = eventTotals.tempExtremes
+    document.querySelector('#volcanoes').textContent = eventTotals.volcanoes
+    document.querySelector('#watercolour').textContent = eventTotals.waterColour
+    document.querySelector('#wildfires').textContent = eventTotals.wildfires
+
+    console.log(eventTotals)
+  }
