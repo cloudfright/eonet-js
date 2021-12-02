@@ -178,3 +178,13 @@ async function fetchDashboardDataAsync() {
   function incrementEvent(map, eventId) {
     map.set(eventId, map.get(eventId) + 1)
   }
+
+
+
+  /*
+  https://eonet.gsfc.nasa.gov/api/v3/events?category=wildfires&days=30
+
+  https://www.chartjs.org/docs/latest/developers/updates.html
+
+  https://www.w3docs.com/snippets/javascript/how-to-format-a-javascript-date.html
+  */

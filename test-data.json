@@ -1,0 +1,813 @@
+{
+    "title": "EONET Events",
+    "description": "Natural events from EONET.",
+    "link": "https://eonet.gsfc.nasa.gov/api/v3/events",
+    "events": [
+        {
+            "id": "EONET_5976",
+            "title": "Wildfire - E of Mesa, Arizona - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5976",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=133800"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-11-27T08:36:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -110.861196043,
+                        33.417201559
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5977",
+            "title": "Wildfire - E of San Luis Obispo, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5977",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=133794"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-11-26T20:37:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -120.045451449,
+                        35.36753333
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5975",
+            "title": "Wildfire - NW of Montpelier, Idaho - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5975",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=133661"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-11-22T20:37:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -111.590258883,
+                        42.686767291
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5974",
+            "title": "Wildfire - W of Riverside, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5974",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=133627"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-11-21T23:37:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -117.488521503,
+                        33.954878389
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5972",
+            "title": "Wildfire - SW of Boulder City, Nevada - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5972",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=133260"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-11-11T20:40:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -115.354724564,
+                        35.621645413
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5968",
+            "title": "Wildfire - NW of Brighton, Brighton and Hove - United Kingdom",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5968",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=132962"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-11-05T05:35:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -0.444536626,
+                        51.12941477
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5966",
+            "title": "Wildfire - S of Tillamook, Oregon - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5966",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=132731"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-31T09:38:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -123.929934447,
+                        45.009877614
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5962",
+            "title": "Wildfire - E of Mesa, Arizona - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5962",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=132297"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-24T21:38:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -110.861165478,
+                        33.416293179
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5955",
+            "title": "Wildfire - W of Agen, Aquitaine - France",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5955",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=132036"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-19T14:36:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -0.011595617,
+                        44.062464887
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5953",
+            "title": "Wildfire - W of Gila Bend, Arizona - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5953",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=132012"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-18T21:39:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -113.498576997,
+                        32.974491635
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5954",
+            "title": "Wildfire - W of Yuba City, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5954",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=132011"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-18T21:39:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -122.164046901,
+                        39.080745035
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5952",
+            "title": "Wildfire - SW of Yuba City, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5952",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=131937"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-16T21:38:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -121.667893746,
+                        39.092390021
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5951",
+            "title": "Wildfire - W of Tulare, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5951",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=131761"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-12T21:39:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -120.07159514,
+                        36.082566967
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5949",
+            "title": "Wildfire - W of Santa Barbara, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5949",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=131731"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-12T09:38:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -120.106440487,
+                        34.50631889
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5945",
+            "title": "Wildfire MB-EA207, Manitoba, Canada",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5945",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "MBFIRE",
+                    "url": "http://www.gov.mb.ca/sd/fire/Fire-Statistic/2021/MBFIRE21.txt"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-05T00:00:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -96.2511,
+                        49.7389
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5950",
+            "title": "Wildfire MB-WE093, Manitoba, Canada",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5950",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "MBFIRE",
+                    "url": "http://www.gov.mb.ca/sd/fire/Fire-Statistic/2021/MBFIRE21.txt"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-10-01T00:00:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -100.5447,
+                        55.03
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5942",
+            "title": "Wildfire - N of Yuba City, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5942",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130983"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-27T21:43:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -121.619186074,
+                        39.188019314
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5940",
+            "title": "Wildfire - E of Tulare, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5940",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130925"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-24T15:41:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -118.664197288,
+                        36.090993645
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5939",
+            "title": "Wildfire - NE of Redding, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5939",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130903"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-23T21:40:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -122.300586725,
+                        40.707903489
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5930",
+            "title": "Wildfire - W of Lancaster, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5930",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130559"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-18T14:45:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -118.757917621,
+                        34.676320178
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5929",
+            "title": "Wildfire - NE of Visalia, California - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5929",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130473"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-16T01:08:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -118.793009903,
+                        36.518072392
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5926",
+            "title": "Wildfire - NE of Dnipropetrovsk, Dnipropetrovsk - Ukraine",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5926",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130300"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-10T11:50:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        35.475028187,
+                        48.686237557
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5925",
+            "title": "Wildfire - E of Mesa, Arizona - United States",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5925",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130287"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-10T00:41:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -110.861358494,
+                        33.417542977
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5922",
+            "title": "Cougar Peak Fire",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5922",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "InciWeb",
+                    "url": "http://inciweb.nwcg.gov/incident/7835/"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-07T13:45:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -120.613,
+                        42.277000000000001
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5920",
+            "title": "Wildfire - E of Ourense, Galicia  - Spain",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5920",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130155"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-07T05:44:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -7.338575131,
+                        42.438826407
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EONET_5921",
+            "title": "Wildfire - NE of Monaco - Monaco",
+            "description": null,
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_5921",
+            "closed": null,
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "sources": [
+                {
+                    "id": "PDC",
+                    "url": "http://emops.pdc.org/emops/?hazard_id=130153"
+                }
+            ],
+            "geometry": [
+                {
+                    "magnitudeValue": null,
+                    "magnitudeUnit": null,
+                    "date": "2021-09-07T02:43:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        8.152622285,
+                        44.068834373
+                    ]
+                }
+            ]
+        }
+    ]
+}
