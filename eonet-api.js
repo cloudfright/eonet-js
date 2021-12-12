@@ -106,3 +106,53 @@ async function fetchDashboardDataAsync() {
   }
 
 }
+
+
+async function fetchChartDataAsync() {
+  let response = await fetch('test-data.json')
+  let data = await response.json()
+
+  console.log("Charts")
+  console.log(data)
+
+  let categoryMonthCount = {
+    'Drought': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Dust Haze': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Earthquakes': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Floods': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Landslides': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Manmade': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Sea Lake Ice': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Severe Storms': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Snow': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Temp Extremes': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Volcanoes': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Water Colour': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Wildfires': [0,0,0,0,0,0,0,0,0,0,0,0],
+  }
+
+  data.events.reduce(function (categories, event) {
+
+
+    let categoryTitle = event.categories[0].title
+   
+  
+    let geometryDate = new Date(event.geometry[0].date)
+    let month = geometryDate.getMonth()
+
+     
+   
+
+    if (categoryTitle in categories) {
+      categories[categoryTitle][month]++
+    }
+
+   
+
+    return categories
+
+  }, categoryMonthCount)
+
+  console.log(categoryMonthCount)
+
+}
