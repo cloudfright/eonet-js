@@ -108,12 +108,13 @@ async function fetchDashboardDataAsync() {
 }
 
 
-async function fetchChartDataAsync() {
+async function fetchChartDataAsync(year=2020) {
+
+  const parameters = `start=${year}-01-01&end=${year}-12-31&status=all`
+  //let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?'+parameters)
+  
   let response = await fetch('test-data.json')
   let data = await response.json()
-
-  console.log("Charts")
-  console.log(data)
 
   let categoryMonthCount = {
     'Drought': [0,0,0,0,0,0,0,0,0,0,0,0],
@@ -133,26 +134,34 @@ async function fetchChartDataAsync() {
 
   data.events.reduce(function (categories, event) {
 
-
     let categoryTitle = event.categories[0].title
-   
-  
     let geometryDate = new Date(event.geometry[0].date)
     let month = geometryDate.getMonth()
-
-     
-   
+    let datasets = []
 
     if (categoryTitle in categories) {
       categories[categoryTitle][month]++
     }
-
-   
-
     return categories
 
   }, categoryMonthCount)
 
   console.log(categoryMonthCount)
 
+  // build our chart datasets only for those categories with events in the year
+  let datasets = []
+  let datasetIdx = 0
+  const colourTable = ['#00aedb', '#a200ff', '#f47835', '#d41243', '#8ec127', '#ff48c4', '#2bd1fc', '#f3ea5f','#c04df9','#ff3f3f','#6b3e26','#ffc5d9']
+ 
+  for (category in categoryMonthCount) {
+
+    const eventCount = (previous, current) => previous + current;
+    if (categoryMonthCount[category].reduce(eventCount) > 0) {
+      console.log(category, 'has events')
+      datasets.push({backgroundColor: colourTable[datasetIdx], label: category, data: categoryMonthCount[category]})
+    }
+    console.log(datasets)
+
+    //console.log(categoryMonthCount[category])
+  }
 }
