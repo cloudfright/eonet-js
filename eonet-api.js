@@ -108,28 +108,29 @@ async function fetchDashboardDataAsync() {
 }
 
 
-async function fetchChartDataAsync(year=2020) {
+async function fetchChartDataAsync(year = 2020) {
 
   const parameters = `start=${year}-01-01&end=${year}-12-31&status=all`
-  //let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?'+parameters)
-  
-  let response = await fetch('test-data.json')
+
+  //let response = await fetch('test-data.json')
+  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?'+parameters)
+ 
   let data = await response.json()
 
   let categoryMonthCount = {
-    'Drought': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Dust Haze': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Earthquakes': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Floods': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Landslides': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Manmade': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Sea Lake Ice': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Severe Storms': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Snow': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Temp Extremes': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Volcanoes': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Water Colour': [0,0,0,0,0,0,0,0,0,0,0,0],
-    'Wildfires': [0,0,0,0,0,0,0,0,0,0,0,0],
+    'Drought': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Dust Haze': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Earthquakes': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Floods': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Landslides': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Manmade': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Sea Lake Ice': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Severe Storms': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Snow': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Temp Extremes': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Volcanoes': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Water Colour': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    'Wildfires': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   }
 
   data.events.reduce(function (categories, event) {
@@ -146,22 +147,53 @@ async function fetchChartDataAsync(year=2020) {
 
   }, categoryMonthCount)
 
-  console.log(categoryMonthCount)
-
   // build our chart datasets only for those categories with events in the year
-  let datasets = []
+  let eventDatasets = []
   let datasetIdx = 0
-  const colourTable = ['#00aedb', '#a200ff', '#f47835', '#d41243', '#8ec127', '#ff48c4', '#2bd1fc', '#f3ea5f','#c04df9','#ff3f3f','#6b3e26','#ffc5d9']
- 
-  for (category in categoryMonthCount) {
+  const colourTable = ['#00aedb', '#a200ff', '#f47835', '#d41243', '#8ec127', '#ff48c4', '#2bd1fc', '#f3ea5f', '#c04df9', '#ff3f3f', '#6b3e26', '#ffc5d9']
 
+  for (category in categoryMonthCount) {
+    // if a category has events in the year, add the monthly as a dataset to be shown
     const eventCount = (previous, current) => previous + current;
     if (categoryMonthCount[category].reduce(eventCount) > 0) {
-      console.log(category, 'has events')
-      datasets.push({backgroundColor: colourTable[datasetIdx], label: category, data: categoryMonthCount[category]})
+      eventDatasets.push({
+        backgroundColor: colourTable[datasetIdx], 
+        label: category, 
+        data: categoryMonthCount[category] 
+      })
+      datasetIdx++
     }
-    console.log(datasets)
 
-    //console.log(categoryMonthCount[category])
   }
+  console.log(eventDatasets)
+  const ctx = document.getElementById('chart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: eventDatasets
+    },
+    options: {
+      scales: {
+        x: {
+          stacked: true,
+        },
+        y: {
+          stacked: true
+        }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'Natural events from ' + year,
+          font: {
+              size: 24,
+              weight: 'bold'
+          },
+          fullSize: true
+        }
+      }
+    }
+  });
 }
