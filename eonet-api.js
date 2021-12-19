@@ -113,8 +113,8 @@ async function fetchChartDataAsync(year = 2020) {
   const parameters = `start=${year}-01-01&end=${year}-12-31&status=all`
 
   //let response = await fetch('test-data.json')
-  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?'+parameters)
- 
+  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?' + parameters)
+
   let data = await response.json()
 
   let categoryMonthCount = {
@@ -157,9 +157,9 @@ async function fetchChartDataAsync(year = 2020) {
     const eventCount = (previous, current) => previous + current;
     if (categoryMonthCount[category].reduce(eventCount) > 0) {
       eventDatasets.push({
-        backgroundColor: colourTable[datasetIdx], 
-        label: category, 
-        data: categoryMonthCount[category] 
+        backgroundColor: colourTable[datasetIdx],
+        label: category,
+        data: categoryMonthCount[category]
       })
       datasetIdx++
     }
@@ -188,12 +188,47 @@ async function fetchChartDataAsync(year = 2020) {
           display: true,
           text: 'Natural events from ' + year,
           font: {
-              size: 24,
-              weight: 'bold'
+            size: 24,
+            weight: 'bold'
           },
           fullSize: true
         }
       }
     }
+  });
+}
+
+async function fetchMapDataAsync() {
+
+  //let response = await fetch('test-data.json')
+  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events/geojson?status=open&days=30')
+  let geoJson = await response.json()
+
+  mapboxgl.accessToken = '';
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+    zoom: 1, // starting zoom
+    center: [138.043, 35.201] // starting center
+  });
+
+  map.on('load', () => {
+    map.addSource('earthquakes', {
+      type: 'geojson',
+      // Use a URL for the value for the `data` property.
+      data: geoJson
+    });
+
+    map.addLayer({
+      'id': 'earthquakes-layer',
+      'type': 'circle',
+      'source': 'earthquakes',
+      'paint': {
+        'circle-radius': 8,
+        'circle-stroke-width': 1,
+        'circle-color': 'red',
+        'circle-stroke-color': 'white'
+      }
+    });
   });
 }
