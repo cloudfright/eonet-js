@@ -1,9 +1,10 @@
 # Introduction
 
-This is a Code Club project to build a simple web application to interact with and visualise NASA's ENONET [API](https://eonet.sci.gsfc.nasa.gov/).
-The data from this API provides information about past and current worldwide natural events. We will use HTML, CSS and JavaScript to build this application.
+This is a project to build a simple web application to interact with and visualise NASA's ENONET [API](https://eonet.sci.gsfc.nasa.gov/).
+The data from this API provides information about past and current worldwide natural events. For simplicity, the application avoids any JavaScript frameworks and explores some of the newer features in ES2015 and beyond. Bootstrap is used for styling and  chart.js and mapbox are used for visualisation.  
+
+
 
 ## Getting Started
 
-- Read the API documentation [here](https://eonet.sci.gsfc.nasa.gov/docs/v3)
-- Refer to the Code Club [backlog](https://dev.azure.com/allenovery/Code%20Club/_backlogs/backlog/Code%20Club%20Team/Epics/) for more details about the planned work
+- Read the EONET API documentation [here](https://eonet.gsfc.nasa.gov/docs/v3)
