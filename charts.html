@@ -48,15 +48,20 @@
     </nav>
   </header>
 
-  <div class="chartContainer">
-    <canvas id="chart" height="250" width="400">
-    </canvas>
-</div>
+  <div class="container">
+    <div class="spinner-grow text-primary m-5" role="status" id="spinner">
+      <span class="visually-hidden">Loading...</span>
+    </div>
 
-    <script>
-      window.addEventListener('load', (event) => {
-          fetchChartDataAsync()
-      });
+    <div class="chartContainer">
+      <canvas id="chart" height="250" width="400">
+      </canvas>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', (event) => {
+      fetchChartDataAsync()
+    });
   </script>
 </body>
 

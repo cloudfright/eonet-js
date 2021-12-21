@@ -1,6 +1,10 @@
 
 // fetch and render data for home page 
 async function fetchCategoriesAsync() {
+
+  let spinner = document.getElementById("spinner")
+  spinner.style.visibility = 'visible'
+
   let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/categories')
   let data = await response.json()
 
@@ -28,10 +32,15 @@ async function fetchCategoriesAsync() {
 
     categories.appendChild(row)
   }
+  spinner.style.visibility = 'hidden'
 }
 
 
 async function fetchDashboardDataAsync() {
+
+  let spinner = document.getElementById("spinner")
+  spinner.style.visibility = 'visible'
+
   let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open')
   let data = await response.json()
 
@@ -104,7 +113,7 @@ async function fetchDashboardDataAsync() {
 
     currentEvents.appendChild(listItem)
   }
-
+  spinner.style.visibility = 'hidden'
 }
 
 
@@ -112,7 +121,9 @@ async function fetchChartDataAsync(year = 2020) {
 
   const parameters = `start=${year}-01-01&end=${year}-12-31&status=all`
 
-  //let response = await fetch('test-data.json')
+  let spinner = document.getElementById("spinner")
+  spinner.style.visibility = 'visible'
+
   let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?' + parameters)
 
   let data = await response.json()
@@ -196,11 +207,14 @@ async function fetchChartDataAsync(year = 2020) {
       }
     }
   });
+  spinner.style.visibility = 'hidden'
 }
 
 async function fetchMapDataAsync() {
 
-  //let response = await fetch('test-data.json')
+  let spinner = document.getElementById("spinner")
+  spinner.style.visibility = 'visible'
+
   let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events/geojson?status=open&days=30')
   let geoJson = await response.json()
 
@@ -231,4 +245,5 @@ async function fetchMapDataAsync() {
       }
     });
   });
+  spinner.style.visibility = 'hidden'
 }
