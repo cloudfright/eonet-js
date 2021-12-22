@@ -35,7 +35,7 @@ async function fetchCategoriesAsync() {
   spinner.style.visibility = 'hidden'
 }
 
-
+// fetch and render data for the dashboard page 
 async function fetchDashboardDataAsync() {
 
   let spinner = document.getElementById("spinner")
@@ -117,9 +117,64 @@ async function fetchDashboardDataAsync() {
 }
 
 
+function initChartControls() {
+
+  let yearSelect = document.querySelector('#year-select')
+  yearSelect.replaceChildren()
+
+  let currentYear =  new Date().getFullYear();
+
+  for (let year = currentYear; year >= 1980; year--) {
+    let listItem = document.createElement('li')
+    listItem.textContent = year
+    listItem.className = "dropdown-item"
+    listItem.addEventListener('click', function() {
+      fetchChartDataAsync(parseInt(this.textContent))
+    })
+    yearSelect.appendChild(listItem)
+  }
+
+  const ctx = document.getElementById('year-events-chart');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: []
+    },
+    options: {
+      scales: {
+        x: {
+          stacked: true,
+        },
+        y: {
+          stacked: true
+        }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'Natural events from ' + currentYear,
+          font: {
+            size: 24,
+            weight: 'bold'
+          },
+          fullSize: true
+        }
+      }
+    }
+  });
+  
+  fetchChartDataAsync(currentYear)
+}
+
+
+
+// fetch and render data for the charts page 
 async function fetchChartDataAsync(year = 2020) {
 
   const parameters = `start=${year}-01-01&end=${year}-12-31&status=all`
+  const chart = Chart.getChart("year-events-chart");
+  chart.clear()
 
   let spinner = document.getElementById("spinner")
   spinner.style.visibility = 'visible'
@@ -174,42 +229,17 @@ async function fetchChartDataAsync(year = 2020) {
       })
       datasetIdx++
     }
-
   }
-  console.log(eventDatasets)
-  const ctx = document.getElementById('chart');
+  
+  chart.data.datasets = eventDatasets
+  chart.options.plugins.title.text = 'Natural events from ' + year,
+  chart.update()
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: eventDatasets
-    },
-    options: {
-      scales: {
-        x: {
-          stacked: true,
-        },
-        y: {
-          stacked: true
-        }
-      },
-      plugins: {
-        title: {
-          display: true,
-          text: 'Natural events from ' + year,
-          font: {
-            size: 24,
-            weight: 'bold'
-          },
-          fullSize: true
-        }
-      }
-    }
-  });
   spinner.style.visibility = 'hidden'
 }
 
+
+// fetch and render data for the maps page 
 async function fetchMapDataAsync() {
 
   let spinner = document.getElementById("spinner")
@@ -247,3 +277,7 @@ async function fetchMapDataAsync() {
   });
   spinner.style.visibility = 'hidden'
 }
+
+
+
+const chart = Chart.getChart("canvas-id");
