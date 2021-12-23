@@ -122,13 +122,13 @@ function initChartControls() {
   let yearSelect = document.querySelector('#year-select')
   yearSelect.replaceChildren()
 
-  let currentYear =  new Date().getFullYear();
+  let currentYear = new Date().getFullYear();
 
   for (let year = currentYear; year >= 1980; year--) {
     let listItem = document.createElement('li')
     listItem.textContent = year
     listItem.className = "dropdown-item"
-    listItem.addEventListener('click', function() {
+    listItem.addEventListener('click', function () {
       fetchChartDataAsync(parseInt(this.textContent))
     })
     yearSelect.appendChild(listItem)
@@ -163,7 +163,7 @@ function initChartControls() {
       }
     }
   });
-  
+
   fetchChartDataAsync(currentYear)
 }
 
@@ -230,14 +230,13 @@ async function fetchChartDataAsync(year = 2020) {
       datasetIdx++
     }
   }
-  
+
   chart.data.datasets = eventDatasets
   chart.options.plugins.title.text = 'Natural events from ' + year,
-  chart.update()
+    chart.update()
 
   spinner.style.visibility = 'hidden'
 }
-
 
 // fetch and render data for the maps page 
 async function fetchMapDataAsync() {
@@ -257,16 +256,15 @@ async function fetchMapDataAsync() {
   });
 
   map.on('load', () => {
-    map.addSource('earthquakes', {
+    map.addSource('natural-events', {
       type: 'geojson',
-      // Use a URL for the value for the `data` property.
       data: geoJson
     });
 
     map.addLayer({
-      'id': 'earthquakes-layer',
+      'id': 'natural-events-layer',
       'type': 'circle',
-      'source': 'earthquakes',
+      'source': 'natural-events',
       'paint': {
         'circle-radius': 8,
         'circle-stroke-width': 1,
@@ -274,10 +272,42 @@ async function fetchMapDataAsync() {
         'circle-stroke-color': 'white'
       }
     });
+
+    // Create a popup, but don't add it to the map yet.
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false
+    });
+
+    map.on('mouseenter', 'natural-events-layer', (e) => {
+      // Change the cursor style as a UI indicator.
+      map.getCanvas().style.cursor = 'pointer';
+
+      // Copy coordinates array.
+      const coordinates = e.features[0].geometry.coordinates.slice();
+      const event = e.features[0].properties
+     // const description = event.title + '<br>' + event.date + '<br>' + event.magnitudeValue ? event.magnitudeValue : ''
+     const speedData =  event.magnitudeValue ? event.magnitudeValue + ' ' + event.magnitudeUnit : '';
+     const eventDate = new Date(event.date)
+     const description = event.title + '<br>' + eventDate.toLocaleString() + '<br>' + speedData
+
+      // Ensure that if the map is zoomed out such that multiple
+      // copies of the feature are visible, the popup appears
+      // over the copy being pointed to.
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+
+      // Populate the popup and set its coordinates
+      // based on the feature found.
+      popup.setLngLat(coordinates).setHTML(description).addTo(map);
+    });
+
+    map.on('mouseleave', 'natural-events-layer', () => {
+      map.getCanvas().style.cursor = '';
+      popup.remove();
+    });
+
   });
   spinner.style.visibility = 'hidden'
 }
-
-
-
-const chart = Chart.getChart("canvas-id");
