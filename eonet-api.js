@@ -1,48 +1,51 @@
 
-// fetch and render data for home page 
+
+
+// fetch and render data for home page
 async function fetchCategoriesAsync() {
 
-  let spinner = document.getElementById("spinner")
-  spinner.style.visibility = 'visible'
+  'use strict';
+  let spinner = document.getElementById("spinner");
+  spinner.style.visibility = 'visible';
 
-  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/categories')
-  let data = await response.json()
+  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/categories');
+  let data = await response.json();
 
-  let categories = document.querySelector('#categories')
-  categories.replaceChildren()
+  let categories = document.querySelector('#categories');
+  categories.replaceChildren();
 
   for (const cateogry of data.categories) {
     let row = document.createElement('div');
-    row.className = "row p-3 bg-light border"
-    row.setAttribute('role', 'row')
+    row.className = "row p-3 bg-light border";
+    row.setAttribute('role', 'row');
 
     let title = document.createElement('div');
-    title.className = "col-sm-4 fw-bold"
-    title.textContent = cateogry.title
-    title.tabIndex = 0
-    title.setAttribute('role', 'cell')
-    row.appendChild(title)
+    title.className = "col-sm-4 fw-bold";
+    title.textContent = cateogry.title;
+    title.tabIndex = 0;
+    title.setAttribute('role', 'cell');
+    row.appendChild(title);
 
     let desc = document.createElement('div');
-    desc.className = "col-sm-8 text-muted"
-    desc.textContent = cateogry.description
-    desc.tabIndex = 0
-    desc.setAttribute('role', 'cell')
-    row.appendChild(desc)
+    desc.className = "col-sm-8 text-muted";
+    desc.textContent = cateogry.description;
+    desc.tabIndex = 0;
+    desc.setAttribute('role', 'cell');
+    row.appendChild(desc);
 
-    categories.appendChild(row)
+    categories.appendChild(row);
   }
-  spinner.style.visibility = 'hidden'
+  spinner.style.visibility = 'hidden';
 }
 
-// fetch and render data for the dashboard page 
+// fetch and render data for the dashboard page
 async function fetchDashboardDataAsync() {
 
-  let spinner = document.getElementById("spinner")
-  spinner.style.visibility = 'visible'
+  let spinner = document.getElementById("spinner");
+  spinner.style.visibility = 'visible';
 
-  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open')
-  let data = await response.json()
+  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open&days=90');
+  let data = await response.json();
 
   let categoryCount = {
     'Drought': 0,
@@ -58,23 +61,23 @@ async function fetchDashboardDataAsync() {
     'Volcanoes': 0,
     'Water Colour': 0,
     'Wildfires': 0
-  }
+  };
 
-  // count up event category titles 
+  // count up event category titles
   data.events.reduce(function (categories, event) {
 
-    let categoryTitle = event.categories[0].title
+    let categoryTitle = event.categories[0].title;
 
     if (categoryTitle in categories) {
-      categories[categoryTitle]++
+      categories[categoryTitle]++;
     }
-    return categories
-  }, categoryCount)
+    return categories;
+  }, categoryCount);
 
   // convert to array
-  var currentEventTotals = []
-  for (category in categoryCount) {
-    currentEventTotals.push({ title: category, count: categoryCount[category] })
+  var currentEventTotals = [];
+  for (let category in categoryCount) {
+    currentEventTotals.push({ title: category, count: categoryCount[category] });
   }
 
   // sort by count descending
@@ -82,56 +85,59 @@ async function fetchDashboardDataAsync() {
     return b.count - a.count;
   });
 
-  // locate the ordered list element we will programmatically append list items to and clear any remove any exsiting list items 
-  let currentEvents = document.querySelector('#currentevents')
-  currentEvents.replaceChildren()
+  // locate the ordered list element we will programmatically append list items to and clear any remove any exsiting list items
+  let currentEvents = document.querySelector('#currentevents');
+  currentEvents.replaceChildren();
 
   // iterate through the sorted event list and create HTML elements
   for (let category of currentEventTotals) {
 
     let listItem = document.createElement('li');
-    listItem.className = "list-group-item d-flex justify-content-between align-items-center"
-    listItem.setAttribute('role', 'row')
+    listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+    listItem.setAttribute('role', 'row');
 
     let title = document.createElement('div');
-    title.className = "fw-bold m-2"
-    title.textContent = category.title
-    title.tabIndex = 0
-    title.setAttribute('role', 'cell')
-    listItem.appendChild(title)
+    title.className = "fw-bold m-2";
+    title.textContent = category.title;
+    title.tabIndex = 0;
+    title.setAttribute('role', 'cell');
+    listItem.appendChild(title);
 
-    let eventTotal = document.createElement('span')
+    let eventTotal = document.createElement('span');
     if (category.count > 0) // only display blue badges for event counts greater than 0
-      eventTotal.className = "badge bg-primary rounded-pill m-2"
+      eventTotal.className = "badge bg-primary rounded-pill m-2";
     else
-      eventTotal.className = "badge bg-secondary rounded-pill m-2"
+      eventTotal.className = "badge bg-secondary rounded-pill m-2";
 
-    eventTotal.textContent = category.count
-    eventTotal.tabIndex = 0
-    eventTotal.setAttribute('role', 'cell')
-    listItem.appendChild(eventTotal)
+    eventTotal.textContent = category.count;
+    eventTotal.tabIndex = 0;
+    eventTotal.setAttribute('role', 'cell');
+    listItem.appendChild(eventTotal);
 
-    currentEvents.appendChild(listItem)
+    currentEvents.appendChild(listItem);
   }
-  spinner.style.visibility = 'hidden'
+  spinner.style.visibility = 'hidden';
 }
 
 
 function initChartControls() {
 
-  let yearSelect = document.querySelector('#year-select')
-  yearSelect.replaceChildren()
+  let yearSelect = document.querySelector('#year-select');
+  yearSelect.replaceChildren();
 
   let currentYear = new Date().getFullYear();
 
+  const yearClickHandler = function () {
+    fetchChartDataAsync(parseInt(this.textContent));
+  };
+
+  // populate the year selection dropdown control
   for (let year = currentYear; year >= 1980; year--) {
-    let listItem = document.createElement('li')
-    listItem.textContent = year
-    listItem.className = "dropdown-item"
-    listItem.addEventListener('click', function () {
-      fetchChartDataAsync(parseInt(this.textContent))
-    })
-    yearSelect.appendChild(listItem)
+    let listItem = document.createElement('li');
+    listItem.textContent = year;
+    listItem.className = "dropdown-item";
+    listItem.addEventListener('click', yearClickHandler);
+    yearSelect.appendChild(listItem);
   }
 
   const ctx = document.getElementById('year-events-chart');
@@ -164,24 +170,23 @@ function initChartControls() {
     }
   });
 
-  fetchChartDataAsync(currentYear)
+  fetchChartDataAsync(currentYear);
 }
 
 
 
-// fetch and render data for the charts page 
+// fetch and render data for the charts page
 async function fetchChartDataAsync(year = 2020) {
 
-  const parameters = `start=${year}-01-01&end=${year}-12-31&status=all`
+  const parameters = `start=${year}-01-01&end=${year}-12-31&status=all`;
   const chart = Chart.getChart("year-events-chart");
-  chart.clear()
+  chart.clear();
 
-  let spinner = document.getElementById("spinner")
-  spinner.style.visibility = 'visible'
+  let spinner = document.getElementById("spinner");
+  spinner.style.visibility = 'visible';
 
-  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?' + parameters)
-
-  let data = await response.json()
+  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?' + parameters);
+  let data = await response.json();
 
   let categoryMonthCount = {
     'Drought': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -197,28 +202,28 @@ async function fetchChartDataAsync(year = 2020) {
     'Volcanoes': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     'Water Colour': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     'Wildfires': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  }
+  };
 
   data.events.reduce(function (categories, event) {
 
-    let categoryTitle = event.categories[0].title
-    let geometryDate = new Date(event.geometry[0].date)
-    let month = geometryDate.getMonth()
-    let datasets = []
+    let categoryTitle = event.categories[0].title;
+    let geometryDate = new Date(event.geometry[0].date);
+    let month = geometryDate.getMonth();
+    let datasets = [];
 
     if (categoryTitle in categories) {
-      categories[categoryTitle][month]++
+      categories[categoryTitle][month]++;
     }
-    return categories
+    return categories;
 
-  }, categoryMonthCount)
+  }, categoryMonthCount);
 
   // build our chart datasets only for those categories with events in the year
-  let eventDatasets = []
-  let datasetIdx = 0
-  const colourTable = ['#00aedb', '#a200ff', '#f47835', '#d41243', '#8ec127', '#ff48c4', '#2bd1fc', '#f3ea5f', '#c04df9', '#ff3f3f', '#6b3e26', '#ffc5d9']
+  let eventDatasets = [];
+  let datasetIdx = 0;
+  const colourTable = ['#00aedb', '#a200ff', '#f47835', '#d41243', '#8ec127', '#ff48c4', '#2bd1fc', '#f3ea5f', '#c04df9', '#ff3f3f', '#6b3e26', '#ffc5d9'];
 
-  for (category in categoryMonthCount) {
+  for (let category in categoryMonthCount) {
     // if a category has events in the year, add the monthly as a dataset to be shown
     const eventCount = (previous, current) => previous + current;
     if (categoryMonthCount[category].reduce(eventCount) > 0) {
@@ -226,26 +231,26 @@ async function fetchChartDataAsync(year = 2020) {
         backgroundColor: colourTable[datasetIdx],
         label: category,
         data: categoryMonthCount[category]
-      })
-      datasetIdx++
+      });
+      datasetIdx++;
     }
   }
 
-  chart.data.datasets = eventDatasets
-  chart.options.plugins.title.text = 'Natural events from ' + year,
-    chart.update()
+  chart.data.datasets = eventDatasets;
+  chart.options.plugins.title.text = 'Natural events from ' + year;
+  chart.update();
 
-  spinner.style.visibility = 'hidden'
+  spinner.style.visibility = 'hidden';
 }
 
-// fetch and render data for the maps page 
+// fetch and render data for the maps page
 async function fetchMapDataAsync() {
 
-  let spinner = document.getElementById("spinner")
-  spinner.style.visibility = 'visible'
+  let spinner = document.getElementById("spinner");
+  spinner.style.visibility = 'visible';
 
-  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events/geojson?status=open&days=30')
-  let geoJson = await response.json()
+  let response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events/geojson?status=open&days=90');
+  let geoJson = await response.json();
 
   mapboxgl.accessToken = '';
   const map = new mapboxgl.Map({
@@ -285,11 +290,11 @@ async function fetchMapDataAsync() {
 
       // Copy coordinates array.
       const coordinates = e.features[0].geometry.coordinates.slice();
-      const event = e.features[0].properties
+      const event = e.features[0].properties;
      // const description = event.title + '<br>' + event.date + '<br>' + event.magnitudeValue ? event.magnitudeValue : ''
      const speedData =  event.magnitudeValue ? event.magnitudeValue + ' ' + event.magnitudeUnit : '';
-     const eventDate = new Date(event.date)
-     const description = event.title + '<br>' + eventDate.toLocaleString() + '<br>' + speedData
+     const eventDate = new Date(event.date);
+     const description = event.title + '<br>' + eventDate.toLocaleString() + '<br>' + speedData;
 
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
@@ -309,5 +314,5 @@ async function fetchMapDataAsync() {
     });
 
   });
-  spinner.style.visibility = 'hidden'
+  spinner.style.visibility = 'hidden';
 }
