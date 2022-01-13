@@ -19,6 +19,6 @@ jobs:
         with:
           submodules: true
       - name: Find and Replace - Using Secrets
-        run: find . -name "maps.js" -exec sed -i ''s/#{MAPBOX_TOKEN_PLACEHOLDER}#/${{ secrets.MAPBOX_ACCESS_TOKEN }}/g'' {} \;
+        run: find . -name 'maps.js' -exec sed -i ''s/#{MAPBOX_TOKEN_PLACEHOLDER}#/${{ secrets.MAPBOX_ACCESS_TOKEN }}/g'' {} \;
       - name: Check secret
-        run: find . -name "maps.js" -exec cat 
+        run: find . -name 'maps.js' -exec cat {} \; 
