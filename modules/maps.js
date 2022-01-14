@@ -10,7 +10,8 @@ async function fetchMapDataAsync() {
     let response = await fetch(EONET_BASE_URL + '/events/geojson?status=open&days=90');
     let geoJson = await response.json();
 
-    mapboxgl.accessToken = '';
+    mapboxgl.accessToken = '#{MAPBOX_TOKEN_PLACEHOLDER}#';
+
     const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/satellite-v9', // style URL
