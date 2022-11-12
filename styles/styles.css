@@ -7,11 +7,11 @@
 body { margin: 0; padding: 0; }
 
 #map {
+
     position: absolute;
     top:0;
     bottom:0;
-    width:80%;
-    min-height: 300px;
+    width:100%;
     margin-top:15%;
     background-color:black;
     border-style: solid;
